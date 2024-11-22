@@ -1,0 +1,31 @@
+// prisma/schema.prisma
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = "file:./dev.db"
+}
+
+model Employee {
+  id        Int    @id @default(autoincrement())
+  firstName String
+  lastName  String
+  telephone String
+  email     String
+  manager   String?
+  status    String
+}
+
+model Department {
+  id        Int    @id @default(autoincrement())
+  name      String
+  manager   String
+  status    String
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+
